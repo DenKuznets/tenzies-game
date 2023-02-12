@@ -1,21 +1,22 @@
 import "./App.css";
-import Dice from "./Dice";
+import Die from "./Die";
 
 function App() {
   return (
     <div className="app">
       <main>
         <div className="dice-container">
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
-          <Dice />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          <Die value='1' />
+          
         </div>
       </main>
     </div>
