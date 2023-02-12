@@ -16,7 +16,7 @@ main {
   width: 320px;
   text-align: center;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 35px;
@@ -27,4 +27,25 @@ main {
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
+}
+
+.roll {
+  background: #5035FF;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  border: none;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16.384px;
+  line-height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  width: 92px;
+  height: 36px;
+  margin-top: 26px;
+  cursor: pointer;
 }
