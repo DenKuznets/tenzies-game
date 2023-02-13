@@ -5,8 +5,13 @@ import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
 function App() {
+  const langEng = "ENG";
+  const langRu = 'RU';
   const [dice, setDice] = useState(() => allNewDice());
   const [tenzies, setTenzies] = useState(false);
+  const [localization, setLocalization] = useState(langEng);
+  let newGameText = localization === langEng ? "New Game" : "Новая Игра";
+  let rollBtnText = localization === langEng ? "Roll" : "Бросить";
   useEffect(() => {
     let value = dice[0].value;
     let win = dice.every((die) => die.value === value && die.isHeld);
@@ -64,13 +69,26 @@ function App() {
     );
   }
 
+  function switchLanguage() {
+    setLocalization(prev => prev === langEng ? langRu : langEng)
+  }
+
   return (
     <div className="app">
       <main>
         {tenzies && <Confetti />}
+        <button onClick={switchLanguage} className="localization">
+          ENG-RU
+        </button>
+        <h1>Tenzies</h1>
+        <p>
+          {localization === langEng
+            ? "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."
+            : "Перекидывайте кубики, пока не выбросите одинаковые значения на всех. Клик по кубику замораживает его."}
+        </p>
         <div className="dice-container">{diceElements}</div>
         <button className="roll" onClick={rollDice}>
-          {tenzies ? "New Game" : "Roll"}
+          {tenzies ? newGameText : rollBtnText}
         </button>
       </main>
     </div>

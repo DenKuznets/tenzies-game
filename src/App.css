@@ -20,6 +20,7 @@ main {
   justify-content: center;
   align-items: center;
   margin: 0 35px;
+  position: relative;
 }
 
 .dice-container {
@@ -52,4 +53,38 @@ main {
 
 .roll:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+main h1 {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #2B283A;
+}
+
+main p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #4A4E74;
+  margin-bottom: 30px;
+  max-width: 233px;
+}
+
+.localization {
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
