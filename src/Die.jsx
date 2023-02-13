@@ -1,7 +1,13 @@
-import './Die.css'
+import "./Die.css";
 
-export default function Dice(props) {
+export default function Die(props) {
+  let heldClass = props.isHeld ? "green-bg" : "";
   return (
-    <div className='dice'>{ props.value }</div>
-  )
+    <div
+      onClick={props.onClick}
+      className={`die ${heldClass}`}
+    >
+      {props.value}
+    </div>
+  );
 }
