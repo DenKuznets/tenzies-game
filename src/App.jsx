@@ -29,7 +29,12 @@ function App() {
   ));
 
   function rollDice() {
-    setDice(allNewDice());
+    setDice(prev => prev.map(die => {
+      let newDie = { ...die };
+      // если кубик не отложен, перекинуть его (поменять значение)
+      if(!newDie.isHeld) newDie.value = Math.floor(Math.random() * (7 - 1) + 1);
+      return newDie;
+    }));
   }
 
   function holdDice(id) {
