@@ -39,15 +39,20 @@ function App() {
   ));
 
   function rollDice() {
-    setDice((prev) =>
-      prev.map((die) => {
-        let newDie = { ...die };
-        // если кубик не отложен, перекинуть его (поменять значение)
-        if (!newDie.isHeld)
-          newDie.value = Math.floor(Math.random() * (7 - 1) + 1);
-        return newDie;
-      })
-    );
+    // если tenzies === true , значит игра окончена и нажатие кнопки должно начать новую игру. Для этого сбрасываем тензис на false и кидаем 10 новых кубиков
+    if (tenzies) {
+      setTenzies(false);
+      setDice(allNewDice());
+    } else
+      setDice((prev) =>
+        prev.map((die) => {
+          let newDie = { ...die };
+          // если кубик не отложен, перекинуть его (поменять значение)
+          if (!newDie.isHeld)
+            newDie.value = Math.floor(Math.random() * (7 - 1) + 1);
+          return newDie;
+        })
+      );
   }
 
   function holdDice(id) {
