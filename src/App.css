@@ -87,4 +87,12 @@ main p {
   position: absolute;
   top: 5px;
   left: 5px;
+  font-size: .7rem;
+  border-radius: 10px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.localization:active{
+  box-shadow: inset 3px 5px 17px -3px rgb(0 0 0 / 70%);
 }

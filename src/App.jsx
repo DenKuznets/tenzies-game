@@ -6,7 +6,7 @@ import Confetti from "react-confetti";
 
 function App() {
   const langEng = "ENG";
-  const langRu = 'RU';
+  const langRu = "RU";
   const [dice, setDice] = useState(() => allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [localization, setLocalization] = useState(langEng);
@@ -70,7 +70,7 @@ function App() {
   }
 
   function switchLanguage() {
-    setLocalization(prev => prev === langEng ? langRu : langEng)
+    setLocalization((prev) => (prev === langEng ? langRu : langEng));
   }
 
   return (
@@ -78,13 +78,13 @@ function App() {
       <main>
         {tenzies && <Confetti />}
         <button onClick={switchLanguage} className="localization">
-          ENG-RU
+          {localization === langEng ? "RU" : "ENG"}
         </button>
         <h1>Tenzies</h1>
         <p>
           {localization === langEng
             ? "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."
-            : "Перекидывайте кубики, пока не выбросите одинаковые значения на всех. Клик по кубику замораживает его."}
+            : "Кидайте кубики, пока не выбросите одинаковые значения на всех. Клик по кубику замораживает его."}
         </p>
         <div className="dice-container">{diceElements}</div>
         <button className="roll" onClick={rollDice}>
