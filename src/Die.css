@@ -27,12 +27,39 @@
   height: 5px;
   border-radius: 50%;
   background-color: black;  
-
+  /* padding: 1rem; */
 }
 
-.one-dot {
+.dots1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.two {
-  
+.dots3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.dots2 .dot:nth-child(1) {
+  top:15%;
+  left: 15%;
+}
+
+.dots2 .dot:nth-child(2) {
+  top:70%;
+  left:70%;
+}
+
+.dots3 .dot:nth-child(1) {
+  top:15%;
+  left: 15%;
+}
+
+.dots3 .dot:nth-child(3) {
+  top:70%;
+  left:70%;
+}
+
+
