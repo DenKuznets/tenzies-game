@@ -91,6 +91,7 @@ main p {
   border-radius: 10px;
   border: 1px solid gray;
   cursor: pointer;
+  width: 50px;
 }
 
 .localization:active{
