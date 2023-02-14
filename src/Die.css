@@ -14,8 +14,25 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  position: relative;
 }
 
 .green-bg {
   background-color: #59E391;
+}
+
+.dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: black;  
+
+}
+
+.one-dot {
+}
+
+.two {
+  
 }
