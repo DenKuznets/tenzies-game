@@ -28,9 +28,10 @@ main {
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
+  margin-bottom: 30px;
 }
 
-.roll {
+.roll-btn {
   background: #5035FF;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.18);
   border-radius: 4px;
@@ -47,7 +48,7 @@ main {
   color: #FFFFFF;
   width: 100px;
   height: 36px;
-  margin-top: 26px;
+  /* margin-top: 26px; */
   cursor: pointer;
 }
 

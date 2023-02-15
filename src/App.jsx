@@ -10,18 +10,30 @@ function App() {
   const langEng = "eng";
   const langRu = "rus";
   const [dice, setDice] = useState(() => allNewDice());
-  const [tenzies, setTenzies] = useState(true);
+  const [tenzies, setTenzies] = useState(false);
   const [loc, setLoc] = useState(langEng);
   const { width, height } = useWindowSize();
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(0);
+  const [gameStart, setGameStart] = useState("");
   useEffect(() => {
     let value = dice[0].value;
     let win = dice.every((die) => die.value === value && die.isHeld);
     if (win) {
       setTenzies(true);
-      console.log("You won!");
     }
   }, [dice]);
+
+  useEffect(() => {
+    let timeToWin = "";
+    if (counter === 1) {
+      setGameStart(Date.now());
+      console.log("game started", Date.now());
+    }
+    if (tenzies === true) {
+      timeToWin = Date.now() - gameStart;
+      console.log("time to win: ", Math.ceil(timeToWin / 1000), "секунд");
+    }
+  }, [counter, tenzies]);
 
   function allNewDice() {
     const arr = [];
@@ -64,7 +76,6 @@ function App() {
   }
 
   function holdDice(id) {
-    // console.log(id);
     setDice((prev) =>
       prev.map((die) => {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
@@ -79,7 +90,6 @@ function App() {
   function handleClick() {
     rollDice();
     setCounter((prev) => prev + 1);
-    console.log(counter);
   }
 
   return (
@@ -91,17 +101,15 @@ function App() {
         </button>
         <h1>Tenzies</h1>
         <p>{text[loc].descr}</p>
-        <div className="dice-container">{diceElements}</div>
-        <button className="roll" onClick={handleClick}>
+        {counter > 0 && <div className="dice-container">{diceElements}</div>}
+        {text[loc].press}
+        <button className="roll-btn" onClick={handleClick}>
           {tenzies ? text[loc].newGame : text[loc].rollBtn}{" "}
           {counter > 0 && !tenzies && counter}
         </button>
+        {text[loc].toStart}
         <div className="score">
-          {tenzies && (
-            <h5>
-              {`${text[loc].score} ${counter}`}
-            </h5>
-          )}
+          {tenzies && <h5>{`${text[loc].score} ${counter}`}</h5>}
         </div>
       </main>
     </div>
