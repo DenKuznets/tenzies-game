@@ -12,6 +12,7 @@ function App() {
   const [tenzies, setTenzies] = useState(false);
   const [localization, setLocalization] = useState(langEng);
   const { width, height } = useWindowSize();
+  const [counter, setCounter] = useState(0);
   let newGameText = localization === langEng ? "New Game" : "Новая Игра";
   let rollBtnText = localization === langEng ? "Roll" : "Бросить";
   useEffect(() => {
@@ -75,6 +76,14 @@ function App() {
     setLocalization((prev) => (prev === langEng ? langRu : langEng));
   }
 
+  function handleClick() {
+    rollDice();
+    setCounter(prev => prev + 1);
+    console.log(counter);
+  }
+
+
+
   return (
     <div className="app">
         {tenzies && <Confetti width={width} height={height} />}
@@ -88,8 +97,9 @@ function App() {
             ? "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."
             : "Кидайте кубики, пока не выбросите одинаковые значения на всех. Клик по кубику замораживает его."}
         </p>
+        <h5> Roll № {counter > 0 && counter}</h5>
         <div className="dice-container">{diceElements}</div>
-        <button className="roll" onClick={rollDice}>
+        <button className="roll" onClick={handleClick}>
           {tenzies ? newGameText : rollBtnText}
         </button>
       </main>
