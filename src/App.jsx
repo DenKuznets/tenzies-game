@@ -3,6 +3,7 @@ import "./App.css";
 import Die from "./Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import useWindowSize from "react-use-window-size";
 
 function App() {
   const langEng = "ENG";
@@ -10,6 +11,7 @@ function App() {
   const [dice, setDice] = useState(() => allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [localization, setLocalization] = useState(langEng);
+  const { width, height } = useWindowSize();
   let newGameText = localization === langEng ? "New Game" : "Новая Игра";
   let rollBtnText = localization === langEng ? "Roll" : "Бросить";
   useEffect(() => {
@@ -75,8 +77,8 @@ function App() {
 
   return (
     <div className="app">
+        {tenzies && <Confetti width={width} height={height} />}
       <main>
-        {tenzies && <Confetti />}
         <button onClick={switchLanguage} className="localization">
           {localization === langEng ? "RU" : "ENG"}
         </button>
