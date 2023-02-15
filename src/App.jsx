@@ -15,25 +15,16 @@ function App() {
   const { width, height } = useWindowSize();
   const [counter, setCounter] = useState(0);
   const [gameStart, setGameStart] = useState("");
+  const [gameEnd, setGameEnd] = useState("");
+
   useEffect(() => {
     let value = dice[0].value;
     let win = dice.every((die) => die.value === value && die.isHeld);
     if (win) {
       setTenzies(true);
+      setGameEnd(Math.ceil((Date.now() - gameStart) / 1000));
     }
-  }, [dice]);
-
-  useEffect(() => {
-    let timeToWin = "";
-    if (counter === 1) {
-      setGameStart(Date.now());
-      console.log("game started", Date.now());
-    }
-    if (tenzies === true) {
-      timeToWin = Date.now() - gameStart;
-      console.log("time to win: ", Math.ceil(timeToWin / 1000), "секунд");
-    }
-  }, [counter, tenzies]);
+  }, [dice, gameStart]);
 
   function allNewDice() {
     const arr = [];
@@ -90,11 +81,14 @@ function App() {
   function handleClick() {
     rollDice();
     setCounter((prev) => prev + 1);
+    if (counter === 1) {
+      setGameStart(Date.now());
+    }
   }
 
   return (
     <div className="app">
-      {tenzies && <Confetti width={width * 0.95} height={height} />}
+      {tenzies && <Confetti width={width * 0.999} height={height} />}
       <main>
         <button onClick={switchLanguage} className="localization">
           {loc === langEng ? "RU" : "ENG"}
@@ -102,14 +96,19 @@ function App() {
         <h1>Tenzies</h1>
         <p>{text[loc].descr}</p>
         {counter > 0 && <div className="dice-container">{diceElements}</div>}
-        {text[loc].press}
+        {counter === 0 && text[loc].press}
         <button className="roll-btn" onClick={handleClick}>
           {tenzies ? text[loc].newGame : text[loc].rollBtn}{" "}
           {counter > 0 && !tenzies && counter}
         </button>
-        {text[loc].toStart}
+        {counter === 0 && text[loc].toStart}
         <div className="score">
-          {tenzies && <h5>{`${text[loc].score} ${counter}`}</h5>}
+          {tenzies && (
+            <>
+              <h5>{`${text[loc].victory} ${gameEnd} ${text[loc].seconds}`}</h5>
+              <h5>{`${text[loc].score} ${counter}`}</h5>
+            </>
+          )}
         </div>
       </main>
     </div>

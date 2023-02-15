@@ -6,6 +6,8 @@ export const text = {
     descr: "Кидайте кубики, пока не выбросите одинаковые значения на всех. Клик по кубику сохраняет результат.",
     press: "Жамите",
     toStart: "чтобы начать",
+    victory: "Победа за",
+    seconds: "сек.",
   },
   eng: {
     newGame: "New Game",
@@ -14,6 +16,8 @@ export const text = {
     descr: "Roll until all dice are the same. Click each die to freeze it at its current value between rolls.",
     press: "Press",
     toStart: "to start",
+    victory: "Finished in",
+    seconds: "sec.",
   }
 }
 

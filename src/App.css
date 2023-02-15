@@ -28,7 +28,7 @@ main {
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .roll-btn {
@@ -49,6 +49,7 @@ main {
   width: 100px;
   height: 36px;
   /* margin-top: 26px; */
+  /* margin-bottom: 10px; */
   cursor: pointer;
 }
 
@@ -101,11 +102,10 @@ main p {
 
 main h5 {
   margin: 0;
-  /* margin-top: 3px; */
 }
 
 .score {
-  /* background-color: red; */
   min-height: 25px;
   height: 25px;
+  margin-top: 10px;
 };
