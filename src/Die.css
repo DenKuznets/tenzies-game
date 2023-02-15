@@ -26,40 +26,116 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: black;  
+  background-color: black;
   /* padding: 1rem; */
 }
 
-.dots1{
+.dots1 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.dots3{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .dots2 .dot:nth-child(1) {
-  top:15%;
+  top: 15%;
   left: 15%;
 }
 
 .dots2 .dot:nth-child(2) {
-  top:70%;
-  left:70%;
+  top: 70%;
+  left: 70%;
+}
+
+.dots3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dots3 .dot:nth-child(1) {
-  top:15%;
+  top: 15%;
   left: 15%;
 }
 
 .dots3 .dot:nth-child(3) {
-  top:70%;
-  left:70%;
+  top: 70%;
+  left: 70%;
 }
 
+.dots4 .dot:nth-child(1) {
+  top: 15%;
+  left: 15%;
+}
 
+.dots4 .dot:nth-child(2) {
+  top: 70%;
+  left: 70%;
+}
+
+.dots4 .dot:nth-child(3) {
+  top: 15%;
+  left: 70%;
+}
+
+.dots4 .dot:nth-child(4) {
+  top: 70%;
+  left: 15%;
+}
+
+.dots5 .dot:nth-child(1) {
+  top: 15%;
+  left: 15%;
+}
+
+.dots5 .dot:nth-child(2) {
+  top: 70%;
+  left: 70%;
+}
+
+.dots5 .dot:nth-child(3) {
+  top: 15%;
+  left: 70%;
+}
+
+.dots5 .dot:nth-child(4) {
+  top: 70%;
+  left: 15%;
+}
+
+.dots5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================= DICE 6 =================== */
+.dots6 .dot:nth-child(1) {
+  top: 15%;
+  left: 15%;
+}
+
+.dots6 .dot:nth-child(2) {
+  top: 70%;
+  left: 70%;
+}
+
+.dots6 .dot:nth-child(3) {
+  top: 15%;
+  left: 70%;
+}
+
+.dots6 .dot:nth-child(4) {
+  top: 70%;
+  left: 15%;
+}
+
+.dots6 .dot:nth-child(5) {
+  top: 43%;
+  left: 15%;
+}
+
+.dots6 .dot:nth-child(6) {
+  top: 43%;
+  left: 70%;
+}
