@@ -13,18 +13,26 @@ function App() {
   const [tenzies, setTenzies] = useState(false);
   const [loc, setLoc] = useState(langEng);
   const { width, height } = useWindowSize();
-  const [counter, setCounter] = useState(0);
+  const [rollCount, setRollCount] = useState(0);
   const [gameStart, setGameStart] = useState("");
-  const [gameEnd, setGameEnd] = useState("");
+  const [gameLength, setGameLength] = useState("");
+  const tbt = "tenziesBestTime";
+  const tbr = "tenziesBestRolls";
 
   useEffect(() => {
-    let value = dice[0].value;
-    let win = dice.every((die) => die.value === value && die.isHeld);
+    let val = dice[0].value;
+    let win = dice.every((die) => die.value === val && die.isHeld);
     if (win) {
       setTenzies(true);
-      setGameEnd(Math.ceil((Date.now() - gameStart) / 1000));
+      setGameLength(Math.ceil((Date.now() - gameStart) / 1000));
+      let bestTime = localStorage.getItem(tbt);
+      let bestRolls = localStorage.getItem(tbr);
+      if (!bestTime || bestTime > gameLength)
+        localStorage.setItem(tbt, gameLength);
+      if (!bestRolls || bestRolls > rollCount)
+        localStorage.setItem(tbr, rollCount);      
     }
-  }, [dice, gameStart]);
+  }, [dice, gameStart, gameLength, rollCount]);
 
   function allNewDice() {
     const arr = [];
@@ -53,7 +61,7 @@ function App() {
     if (tenzies) {
       setTenzies(false);
       setDice(allNewDice());
-      setCounter(0);
+      setRollCount(0);
     } else
       setDice((prev) =>
         prev.map((die) => {
@@ -80,8 +88,8 @@ function App() {
 
   function handleClick() {
     rollDice();
-    setCounter((prev) => prev + 1);
-    if (counter === 1) {
+    setRollCount((prev) => prev + 1);
+    if (rollCount === 1) {
       setGameStart(Date.now());
     }
   }
@@ -95,18 +103,22 @@ function App() {
         </button>
         <h1>Tenzies</h1>
         <p>{text[loc].descr}</p>
-        {counter > 0 && <div className="dice-container">{diceElements}</div>}
-        {counter === 0 && text[loc].press}
+        {rollCount > 0 && <div className="dice-container">{diceElements}</div>}
+        {rollCount === 0 && text[loc].press}
         <button className="roll-btn" onClick={handleClick}>
           {tenzies ? text[loc].newGame : text[loc].rollBtn}{" "}
-          {counter > 0 && !tenzies && counter}
+          {rollCount > 0 && !tenzies && rollCount}
         </button>
-        {counter === 0 && text[loc].toStart}
+        {rollCount === 0 && text[loc].toStart}
         <div className="score">
           {tenzies && (
             <>
-              <h5>{`${text[loc].victory} ${gameEnd} ${text[loc].seconds}`}</h5>
-              <h5>{`${text[loc].score} ${counter}`}</h5>
+              <h5>{`${text[loc].victory} ${gameLength} ${text[loc].seconds} (${
+                text[loc].best
+              }: ${localStorage.getItem(tbt)})`}</h5>
+              <h5>{`${text[loc].score} ${rollCount} (${
+                text[loc].best
+              }: ${localStorage.getItem(tbr)})`}</h5>
             </>
           )}
         </div>

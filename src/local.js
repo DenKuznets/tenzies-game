@@ -8,6 +8,7 @@ export const text = {
     toStart: "чтобы начать",
     victory: "Победа за",
     seconds: "сек.",
+    best: "лучш.",
   },
   eng: {
     newGame: "New Game",
@@ -18,6 +19,7 @@ export const text = {
     toStart: "to start",
     victory: "Finished in",
     seconds: "sec.",
+    best: "best",
   }
 }
 
