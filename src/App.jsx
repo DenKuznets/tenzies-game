@@ -11,7 +11,7 @@ function App() {
   const langRu = "rus";
   const [dice, setDice] = useState(() => allNewDice());
   const [tenzies, setTenzies] = useState(false);
-  const [loc, setLoc] = useState(langEng);
+  const [loc, setLoc] = useState(langRu);
   const { width, height } = useWindowSize();
   const [rollCount, setRollCount] = useState(0);
   const [gameStart, setGameStart] = useState("");
